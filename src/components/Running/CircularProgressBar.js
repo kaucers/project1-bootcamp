@@ -3,12 +3,21 @@ import React from 'react';
 class CircularProgressBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {}
   }
 
   //Extracting audio
   playAudio = (sound) => {
     new Audio(sound).play();
+  };
+
+  //Auto Image Generator (lower case)
+  imageSearch = (textInput) =>{
+    let textArray = textInput.split(" ",3) //limited to maximum 1st 3 words
+    let delimitedText = textArray.join('-')
+    const defaultText = "https://source.unsplash.com/featured?"
+    console.log(defaultText.concat(delimitedText))
+    return (defaultText.concat(delimitedText).toLocaleLowerCase())
   };
 
   render() {
@@ -24,7 +33,7 @@ class CircularProgressBar extends React.Component {
     const dashOffset = dashArray - (dashArray * this.props.percentage) / 100;
 
     return (
-      <svg //Creating the overall .svg graphic
+      <svg className='circle-icon'//Creating the overall .svg graphic
         width={this.props.sqSize}
         height={this.props.sqSize}
         viewBox={viewBox}
@@ -40,11 +49,13 @@ class CircularProgressBar extends React.Component {
             />
           </clipPath>
         </defs>
-        <image
+
+        <image className = 'unsplash-graphic'
           width={this.props.sqSize}
           height={this.props.sqSize}
-          href='https://evergoodfoods.com/wp-content/uploads/2020/04/2L1A8146-min-scaled.jpg'
+          href={this.imageSearch(this.props.taskName)}
           clip-path='url(#circleView)'
+          alt="Unsplash Image"
         />
 
         <circle
@@ -88,6 +99,7 @@ CircularProgressBar.defaultProps = {
   sqSize: 200,
   percentage: 25,
   strokeWidth: 10,
+  taskName: "boiling pasta",
 };
 
 export default CircularProgressBar;

@@ -1,8 +1,8 @@
 import React from "react";
 //import CircularProgress from '@mui/joy/CircularProgress';
-import CircularProgressBar from "../../components/CircularProgressBar";
-import ding from "../../components/assets/ding.mp3";
-import tick from "../../components/assets/tick.mp3";
+import CircularProgressBar from "./CircularProgressBar";
+import ding from "../../assets/ding.mp3";
+import tick from "../../assets/tick.mp3";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import styles from "./Stopwatch.module.css";
@@ -97,7 +97,7 @@ class Stopwatch extends React.Component {
 
   //Inserting the timer graphic
   timerGraphic = () => {
-    return <CircularProgressBar strokeWidth="12.5" sqSize="200" percentage={this.calPercent()} />;
+    return <CircularProgressBar strokeWidth="12.5" sqSize="200" percentage={this.calPercent()} taskName = {this.props.name} />;
   };
 
   render() {
@@ -112,9 +112,10 @@ class Stopwatch extends React.Component {
         </div>
         <Card.Body>
           <Card.Title>{this.state.name}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{this.formatTime(this.state.time)}</Card.Subtitle>
+          
           {/* <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text> */}
           <Card.Text style={{ textAlign: "center" }}>{this.timerGraphic()}</Card.Text>
+          <div className='buttonArray'>{this.formatTime(this.state.time)}</div>
           <Button variant="primary" size="sm" disabled={this.state.time === 0} onClick={isStarted ? this.startTimer : this.stopTimer}>
             {isStarted ? "Start" : "Stop"}
           </Button>

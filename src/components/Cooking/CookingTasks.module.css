@@ -1,5 +1,5 @@
-.container{
-    background-color:papayawhip;
+.container {
+    background-color: papayawhip;
     padding: 20px;
     border-radius: var(--border-radius);
 }
@@ -9,3 +9,4 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+

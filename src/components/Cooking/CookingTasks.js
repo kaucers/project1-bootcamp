@@ -12,7 +12,7 @@ export default function CookingTasks({
 }) {
   return (
     <div className={styles.container}>
-      <h1>Cooking Tasks</h1>
+      <h1> Recipe Task List</h1>
       {/* Register Time */}
       <Stack gap={3}>
         <RegisterTime onChange={onChange} onAddTask={onAddTask} />

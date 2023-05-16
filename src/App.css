@@ -71,9 +71,15 @@ h2 {
   stroke-opacity: 30%;
 }
 
-
-
 .fullWidth{
   display: flex;
   flex: 1;
+}
+
+.title-block{
+  color: black;
+}
+
+#footer-block{
+  text-align:center;
 }
